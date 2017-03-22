@@ -2745,6 +2745,11 @@ function set_min_max_y (args) {
     data = data.concat(args.baselines);
   }
 
+  /*AVGL-2: consider confidence bands when calculating chart height */
+  if( args.show_confidence_band ) {
+    data = data.concat(args.show_confidence_band);
+  }
+    
   var extents = d3.extent(data, function (d) {
     return d[args.y_accessor];
   });
@@ -4544,7 +4549,7 @@ MG.button_layout = function(target) {
     plot.existing_band = svg.selectAll('.mg-confidence-band').nodes();
     if (args.show_confidence_band) {
       plot.confidence_area = d3.area()
-        /* AVGL - 1: since we want to use the confidence band as forecast we need to also render it even if the real value is null*/
+        /* AVGL-1: since we want to use the confidence band as forecast we need to also render it even if the real value is null*/
         //.defined(plot.line.defined())
         .x(args.scalefns.xf)
         .y0(function(d) {
