@@ -4544,7 +4544,8 @@ MG.button_layout = function(target) {
     plot.existing_band = svg.selectAll('.mg-confidence-band').nodes();
     if (args.show_confidence_band) {
       plot.confidence_area = d3.area()
-        .defined(plot.line.defined())
+        /* AVGL - 1: since we want to use the confidence band as forecast we need to also render it even if the real value is null*/
+        //.defined(plot.line.defined())
         .x(args.scalefns.xf)
         .y0(function(d) {
           var l = args.show_confidence_band[0];
