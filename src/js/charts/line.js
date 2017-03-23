@@ -17,7 +17,8 @@
     plot.existing_band = svg.selectAll('.mg-confidence-band').nodes();
     if (args.show_confidence_band) {
       plot.confidence_area = d3.area()
-        .defined(plot.line.defined())
+        //AVGL-1: draw confidence band even if there are no raw values
+        //.defined(plot.line.defined())
         .x(args.scalefns.xf)
         .y0(function(d) {
           var l = args.show_confidence_band[0];
