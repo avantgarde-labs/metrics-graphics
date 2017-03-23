@@ -108,7 +108,7 @@ function mg_place_baseline_text(gb, args) {
     .attr('y', y_pos)
     .attr('dy', -3)
     .attr('text-anchor', 'end')
-    .text(mg_return_label);
+    .html(mg_return_label); //AVGL-3 convert text to html to allow labels to be in unicode
 }
 
 function markers(args) {
