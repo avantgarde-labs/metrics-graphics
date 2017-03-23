@@ -869,6 +869,11 @@ function set_min_max_y (args) {
     data = data.concat(args.baselines);
   }
 
+  /*AVGL-2: consider confidence bands when calculating chart height */
+  if( args.show_confidence_band ) {
+    data = data.concat(args.show_confidence_band);
+  }
+    
   var extents = d3.extent(data, function (d) {
     return d[args.y_accessor];
   });
